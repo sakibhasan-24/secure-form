@@ -1,7 +1,23 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Login from "./Login";
+import Home from "./Home";
+import Header from "./Header";
+import Register from "./Register";
+
 export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+      children: [
+        { path: "/login", element: <Login /> },
+        { path: "/register", element: <Register /> },
+      ],
+    },
+  ]);
   return (
     <div>
-      <h1 className="text-8xl">Login </h1>
+      <RouterProvider router={router} />{" "}
     </div>
   );
 }
